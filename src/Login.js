@@ -1,6 +1,11 @@
 import React from "react";
+import Headers from "components/Headers";
 
 const Login = () => {
-  return <h2>Login Page</h2>;
+  return (
+    <>
+      <Headers title={"로그인"} />
+    </>
+  );
 };
 export default Login;

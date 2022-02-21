@@ -1,11 +1,12 @@
 import React from "react";
 import Headers from "components/Headers";
 
-const Main = () => {
+const Expense = () => {
   return (
     <>
-      <Headers title={"메인"} />
+      <Headers title={"지출"} />
     </>
   );
 };
-export default Main;
+
+export default Expense;
