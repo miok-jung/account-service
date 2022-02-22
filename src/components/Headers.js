@@ -1,6 +1,6 @@
 import React from "react";
-import "css/header.css";
 import { Link } from "react-router-dom";
+import "css/header.scss";
 
 const Headers = ({ title }) => {
   return (
@@ -9,6 +9,7 @@ const Headers = ({ title }) => {
       <nav>
         <Link to="/">메인</Link>
         <Link to="/income">수입</Link>
+        <Link to="/expense">지출</Link>
       </nav>
     </header>
   );

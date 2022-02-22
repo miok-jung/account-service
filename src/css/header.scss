@@ -1,0 +1,14 @@
+header {
+  text-align: center;
+  nav {
+    a {
+      display: inline-block;
+      margin-right: 1rem;
+      padding: 0.5rem;
+      background-color: #f1f2f3;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
