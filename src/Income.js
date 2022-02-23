@@ -1,10 +1,14 @@
 import React from "react";
 import Headers from "components/Headers";
+import Lists from "components/Lists";
+import incomeArr from "dummy/income.json";
 
-const Income = () => {
+const Income = ({ title }) => {
   return (
     <>
-      <Headers title={"수입"} />
+      <Headers title={title} />
+      <hr />
+      <Lists title={title} arr={incomeArr} />
     </>
   );
 };

@@ -1,32 +1,30 @@
-{
-  "expense": [
-    {
-      "date": "20220101",
-      "large_categories": "신용",
-      "small_categories": "롯데",
-      "content": "버스요금비",
-      "price": "13450"
-    },
-    {
-      "date": "20220101",
-      "large_categories": "신용",
-      "small_categories": "롯데",
-      "content": "지하철 요금비",
-      "price": "5200"
-    },
-    {
-      "date": "20220101",
-      "large_categories": "체크",
-      "small_categories": "카카오체크",
-      "content": "치즈케이크 재료비 구입",
-      "price": "17560"
-    },
-    {
-      "date": "20220103",
-      "large_categories": "체크",
-      "small_categories": "우리체크",
-      "content": "스티커구입",
-      "price": "10000"
-    }
-  ]
-}
+[
+  {
+    "date": "20220101",
+    "large_categories": "신용",
+    "small_categories": "롯데",
+    "content": "버스요금비",
+    "price": "13450"
+  },
+  {
+    "date": "20220101",
+    "large_categories": "신용",
+    "small_categories": "롯데",
+    "content": "지하철 요금비",
+    "price": "5200"
+  },
+  {
+    "date": "20220101",
+    "large_categories": "체크",
+    "small_categories": "카카오체크",
+    "content": "치즈케이크 재료비 구입",
+    "price": "17560"
+  },
+  {
+    "date": "20220103",
+    "large_categories": "체크",
+    "small_categories": "우리체크",
+    "content": "스티커구입",
+    "price": "10000"
+  }
+]
