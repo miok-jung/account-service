@@ -1,10 +1,12 @@
 import dayjs from "dayjs";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Lists = ({ title, arr }) => {
   return (
     <div>
       <h2>{title} 내역</h2>
+      <Link to="/input">입력</Link>
       <table>
         <thead>
           <tr>
