@@ -9,6 +9,8 @@ const Input = ({ title }) => {
   };
   const [selected, setSelected] = useState(0);
   const [selectedSecond, setSelectedSecond] = useState(0);
+  const [content, setContent] = useState("");
+  const [price, setPrice] = useState(0);
 
   const largeOptions = ["현금", "계좌", "증권", "체크", "신용"];
   const smallOptions = [
@@ -35,28 +37,44 @@ const Input = ({ title }) => {
   const handleSelectSecond = (e) => {
     setSelectedSecond(parseInt(e.target.value));
   };
+  const handleContent = (e) => {
+    setContent(e.target.value);
+  };
+  const handlePrice = (e) => {
+    let total = e.target.value;
+    if (total < 1000) {
+      setPrice(total);
+    } else {
+      setPrice(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    }
+  };
   return (
     <>
       <Headers title={title} />
       <hr />
       <h3>입력하기</h3>
       <button onClick={onHistoryBack}>뒤로가기</button>
-      <select onChange={handleSelect} value={selected}>
-        <option>대그룹 선택</option>
-        {largeOptions.map((item, index) => (
-          <option key={index} value={index}>
-            {item}
-          </option>
-        ))}
-      </select>
-      <select onChange={handleSelectSecond}>
-        <option>소그룹 선택</option>
-        {smallOptions[selected].map((list, index) => (
-          <option key={index} value={index}>
-            {list}
-          </option>
-        ))}
-      </select>
+      <form>
+        <select onChange={handleSelect} value={selected}>
+          <option>대그룹 선택</option>
+          {largeOptions.map((item, index) => (
+            <option key={index} value={index}>
+              {item}
+            </option>
+          ))}
+        </select>
+        <select onChange={handleSelectSecond}>
+          <option>소그룹 선택</option>
+          {smallOptions[selected].map((list, index) => (
+            <option key={index} value={index}>
+              {list}
+            </option>
+          ))}
+        </select>
+        <input onChange={handleContent} type="text" />
+        <input onChange={handlePrice} type="number" />
+        <input type="submit" value="저장하기" />
+      </form>
     </>
   );
 };
