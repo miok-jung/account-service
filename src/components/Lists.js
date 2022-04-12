@@ -6,7 +6,7 @@ const Lists = ({ title, arr }) => {
   return (
     <div>
       <h2>{title} 내역</h2>
-      <Link to="/input">입력</Link>
+      <Link to="/upload">입력</Link>
       <table>
         <thead>
           <tr>

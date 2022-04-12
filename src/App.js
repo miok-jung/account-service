@@ -1,22 +1,20 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "./Main";
 import Income from "./Income";
 import Expense from "Expense";
 import Login from "./Login";
-import Input from "./Input";
+import Upload from "./Upload";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={() => <Main />} />
-        <Route path="/input" component={() => <Input title={"입력/수정"} />} />
-        <Route path="/income" component={() => <Income title={"수입"} />} />
-        <Route path="/expense" component={() => <Expense title={"지출"} />} />
-        <Route path="/login" component={() => <Login />} />
-      </Switch>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" exact element={<Main />} />
+      <Route path="/upload" element={<Upload title={"입력/수정"} />} />
+      <Route path="/income" element={<Income title={"수입"} />} />
+      <Route path="/expense" element={<Expense title={"지출"} />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 };
 export default App;
