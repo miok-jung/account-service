@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Headers from "components/Headers";
 import Lists from "components/Lists";
-import expenseArr from "dummy/expense.json";
+import axios from "axios";
+// import expenseArr from "dummy/expense.json";
 
-const Expense = ({ title }) => {
+const Expense = ({ title, pathname }) => {
+  const [List, setList] = useState([]);
+  const [Loading, setLoading] = useState(false);
+  useEffect(() => {
+    axios
+      .post("/api/expense/list")
+      .then((res) => {
+        setList(res.data.postList);
+        setLoading(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return (
     <>
       <Headers title={title} />
       <hr />
-      <Lists title={title} arr={expenseArr} />
+      {Loading ? (
+        <Lists title={title} arr={List} pathname={pathname} />
+      ) : (
+        <p>Loading....</p>
+      )}
     </>
   );
 };

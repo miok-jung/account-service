@@ -1,12 +1,14 @@
 import dayjs from "dayjs";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Lists = ({ title, arr }) => {
+const Lists = ({ title, arr, pathname }) => {
+  let navigate = useNavigate();
+
   return (
     <div>
       <h2>{title} 내역</h2>
-      <Link to="/upload">입력</Link>
+      <Link to={`${pathname}/upload`}>입력</Link>
       <table>
         <thead>
           <tr>
@@ -22,8 +24,8 @@ const Lists = ({ title, arr }) => {
             return (
               <tr key={index}>
                 <td>{dayjs(item.date).format("YY. MM. DD")}</td>
-                <td>{item.large_categories}</td>
-                <td>{item.small_categories}</td>
+                <td>{item.largeCategory}</td>
+                <td>{item.smallCategory}</td>
                 <td>{item.content}</td>
                 <td>
                   {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}

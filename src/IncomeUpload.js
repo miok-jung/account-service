@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import "css/input.scss";
 import axios from "axios";
 
-const Upload = ({ title }) => {
+const IncomeUpload = ({ title }) => {
   let navigate = useNavigate();
 
   const onBack = () => {
     navigate(-1);
   };
+
+  const [date, setDate] = useState(0);
   const [largeCategory, setLargeCategory] = useState(0);
   const [smallCategory, setSmallCategory] = useState(0);
   const [content, setContent] = useState("");
@@ -34,6 +36,10 @@ const Upload = ({ title }) => {
     ["체크1", "체크2", "체크3", "체크4", "체크5"],
     ["카드1", "카드2", "카드3", "카드4", "카드5"],
   ];
+
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
   const handleSelect = (e) => {
     setLargeCategory(parseInt(e.target.value));
   };
@@ -49,6 +55,7 @@ const Upload = ({ title }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
+      date === "" ||
       largeCategory === "" ||
       smallCategory === "" ||
       content === "" ||
@@ -57,6 +64,7 @@ const Upload = ({ title }) => {
       return alert("모든 항목을 채워주세요.");
     }
     let body = {
+      date: date,
       largeCategory: largeCategory,
       smallCategory: smallCategory,
       content: content,
@@ -64,7 +72,7 @@ const Upload = ({ title }) => {
     };
     console.log("body", body);
     axios
-      .post("/api/record", body)
+      .post("/api/income/submit", body)
       .then((res) => {
         if (res.data.success) {
           alert("저장이 완료되었습니다.");
@@ -83,6 +91,8 @@ const Upload = ({ title }) => {
       <h3>입력하기</h3>
       <button onClick={onBack}>뒤로가기</button>
       <form>
+        <label htmlFor="inputDate">날짜 선택</label>
+        <input id="inputDate" type="date" onChange={handleDate} value={date} />
         <select onChange={handleSelect} value={largeCategory}>
           <option>대그룹 선택</option>
           {largeOptions.map((item, index) => (
@@ -108,4 +118,4 @@ const Upload = ({ title }) => {
   );
 };
 
-export default Upload;
+export default IncomeUpload;
