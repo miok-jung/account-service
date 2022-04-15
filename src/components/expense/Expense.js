@@ -11,7 +11,7 @@ const Expense = ({ title, pathname }) => {
     axios
       .post("/api/expense/list")
       .then((res) => {
-        setList(res.data.postList);
+        setList(...res.data.postList);
         setLoading(true);
       })
       .catch((err) => {

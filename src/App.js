@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./Main";
-import Income from "./Income";
-import Expense from "Expense";
+import Income from "./components/income/Income";
+import Expense from "components/expense/Expense";
 import Login from "./Login";
-import IncomeUpload from "IncomeUpload";
-import ExpenseUpload from "./ExpenseUpload";
+import IncomeUpload from "components/income/IncomeUpload";
+import ExpenseUpload from "./components/expense/ExpenseUpload";
 
 const App = () => {
   return (

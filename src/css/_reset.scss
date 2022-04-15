@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import "./variable";
+
 * {
   margin: 0;
   padding: 0;
   font-family: "Jua", sans-serif;
 }
-$main-color: black;
+
+// ANCHOR 공통
 a {
   text-decoration: none;
-  color: $main-color;
+  color: $color1;
 }
 li {
   list-style: none;
