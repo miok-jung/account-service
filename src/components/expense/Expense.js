@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Headers from "components/Headers";
 import Lists from "components/Lists";
 import axios from "axios";
-// import expenseArr from "dummy/expense.json";
 
 const Expense = ({ title, pathname }) => {
   const [List, setList] = useState([]);
@@ -21,7 +20,6 @@ const Expense = ({ title, pathname }) => {
   return (
     <>
       <Headers title={title} />
-      <hr />
       {Loading ? (
         <Lists title={title} arr={List} pathname={pathname} />
       ) : (

@@ -56,6 +56,7 @@ const IncomeUpload = ({ title }) => {
     e.preventDefault();
     if (
       date === "" ||
+      date === 0 ||
       largeCategory === "" ||
       smallCategory === "" ||
       content === "" ||
@@ -70,7 +71,6 @@ const IncomeUpload = ({ title }) => {
       content: content,
       price: price,
     };
-    console.log("body", body);
     axios
       .post("/api/income/submit", body)
       .then((res) => {

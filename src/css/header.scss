@@ -6,10 +6,18 @@ header {
     a {
       display: inline-block;
       margin-right: 1rem;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid $color1;
       background-color: $color5;
+      color: $color2;
       &:last-child {
         margin-right: 0;
+      }
+      &:hover {
+        border: 1px solid $color5;
+        background-color: $color1;
+        color: $color5;
       }
     }
   }

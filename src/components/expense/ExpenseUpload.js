@@ -70,7 +70,6 @@ const ExpenseUpload = ({ title }) => {
       content: content,
       price: price,
     };
-    console.log("body", body);
     axios
       .post("/api/expense/submit", body)
       .then((res) => {

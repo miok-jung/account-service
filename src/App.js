@@ -6,6 +6,8 @@ import Expense from "components/expense/Expense";
 import Login from "./Login";
 import IncomeUpload from "components/income/IncomeUpload";
 import ExpenseUpload from "./components/expense/ExpenseUpload";
+import IncomeDetail from "components/income/Detail";
+import ExpenseDetail from "components/expense/Detail";
 
 const App = () => {
   return (
@@ -20,12 +22,20 @@ const App = () => {
         element={<IncomeUpload title={"수입 입력"} />}
       />
       <Route
+        path="/income/:postNum"
+        element={<IncomeDetail title={"수입 수정"} />}
+      />
+      <Route
         path="/expense"
         element={<Expense title={"지출"} pathname={"/expense"} />}
       />
       <Route
         path="/expense/upload"
         element={<ExpenseUpload title={"지출 입력"} />}
+      />
+      <Route
+        path="/expense/:postNum"
+        element={<ExpenseDetail title={"지출 수정"} />}
       />
       <Route path="/login" element={<Login />} />
     </Routes>
