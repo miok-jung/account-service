@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Headers from "components/Headers";
 import Lists from "components/Lists";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
-const Expense = ({ title, pathname }) => {
+const Expense = ({ title }) => {
+  let { pathname } = useLocation();
+
   const [List, setList] = useState([]);
   const [Loading, setLoading] = useState(false);
   useEffect(() => {

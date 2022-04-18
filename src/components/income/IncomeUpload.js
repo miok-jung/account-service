@@ -86,7 +86,7 @@ const IncomeUpload = ({ title }) => {
       });
   };
   return (
-    <div className="input-wrap">
+    <div className="wrap_upload">
       <Headers title={title} />
       <h3>입력하기</h3>
       <button onClick={onBack}>뒤로가기</button>

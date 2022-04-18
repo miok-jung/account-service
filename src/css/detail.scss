@@ -1,0 +1,24 @@
+@import "./variable";
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5rem auto;
+  padding: 2rem 0;
+  width: 90%;
+  border: 1px solid $color4;
+  box-shadow: $color4 0px 3px 5px;
+  dt {
+    margin-left: 5%;
+    width: 25%;
+    line-height: 5rem;
+    font-size: 2rem;
+  }
+  dd {
+    width: 70%;
+    line-height: 5rem;
+    font-size: 1.5rem;
+  }
+}
+.button_wrap {
+  border: 1px solid red;
+}
