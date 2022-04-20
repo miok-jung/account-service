@@ -20,5 +20,32 @@ dl {
   }
 }
 .button_wrap {
-  border: 1px solid red;
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  margin: 0 auto;
+  button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $color1;
+  }
+  .btn_edit {
+    margin-right: 1rem;
+    background-color: $color5;
+    color: $color2;
+    &:hover {
+      border: 1px solid $color5;
+      background-color: $color1;
+      color: $color5;
+    }
+  }
+  .btn_delete {
+    color: $color2;
+    background-color: $color4;
+    &:hover {
+      background-color: $color2;
+      color: red;
+    }
+  }
 }

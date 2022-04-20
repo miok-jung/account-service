@@ -46,8 +46,8 @@ const IncomeDetail = ({ title }) => {
             <dd>{PostInfo.price}</dd>
           </dl>
           <div className="button_wrap">
-            <button>수정</button>
-            <button>삭제</button>
+            <button className="btn_edit">수정</button>
+            <button className="btn_delete">삭제</button>
           </div>
         </>
       ) : (
