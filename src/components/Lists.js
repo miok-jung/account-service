@@ -36,8 +36,6 @@ const Lists = ({ title }) => {
             <thead>
               <tr>
                 <th>날짜</th>
-                <th>대분류</th>
-                <th>소분류</th>
                 <th>내용</th>
                 <th>가격</th>
                 <th>수정</th>
@@ -49,8 +47,6 @@ const Lists = ({ title }) => {
                 return (
                   <tr key={index} className="btn_tr_wrap">
                     <td>{dayjs(item.date).format("YY. MM. DD")}</td>
-                    <td>{item.largeCategory}</td>
-                    <td>{item.smallCategory}</td>
                     <td>
                       <Link
                         to={`${pathname}/${item.postNum}`}
@@ -66,7 +62,7 @@ const Lists = ({ title }) => {
                       원
                     </td>
                     <td>
-                      <Link to={`${pathname}/${item.postNum}`}>수정</Link>
+                      <Link to={`${pathname}/edit/${item.postNum}`}>수정</Link>
                     </td>
                     <td className="btn_delete">삭제</td>
                   </tr>
