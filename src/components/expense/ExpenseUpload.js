@@ -61,7 +61,12 @@ const ExpenseUpload = ({ title }) => {
       <button onClick={onBack}>뒤로가기</button>
       <form>
         <label htmlFor="inputDate">날짜 선택</label>
-        <input id="inputDate" type="date" onChange={handleDate} value={date} />
+        <input
+          id="inputDate"
+          type="date"
+          onChange={handleDate}
+          value={date || ""}
+        />
         <input onChange={handleContent} type="text" />
         <input onChange={handlePrice} type="number" />
         <input type="submit" value="저장하기" onClick={(e) => onSubmit(e)} />

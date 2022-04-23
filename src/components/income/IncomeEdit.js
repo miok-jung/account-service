@@ -21,7 +21,7 @@ const IncomeEdit = ({ title }) => {
     axios
       .post("/api/income/detail", body)
       .then((res) => {
-        setPostInfo(res.data.income);
+        setPostInfo(res.data.post);
         setFlag(true);
       })
       .catch((err) => {
@@ -82,9 +82,14 @@ const IncomeEdit = ({ title }) => {
       <button onClick={onBack}>뒤로가기</button>
       <form>
         <label htmlFor="inputDate">날짜 선택</label>
-        <input id="inputDate" type="date" onChange={handleDate} value={date} />
-        <input onChange={handleContent} type="text" value={content} />
-        <input onChange={handlePrice} type="number" value={price} />
+        <input
+          id="inputDate"
+          type="date"
+          onChange={handleDate}
+          value={date || ""}
+        />
+        <input onChange={handleContent} type="text" value={content || ""} />
+        <input onChange={handlePrice} type="number" value={price || ""} />
         <input type="submit" value="저장하기" onClick={(e) => onSubmit(e)} />
       </form>
     </div>

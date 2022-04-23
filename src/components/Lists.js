@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
 import "../css/list.scss";
 
-const Lists = ({ title }) => {
-  let { pathname } = useLocation(); // pathname은 슬래시(/)가 추가되서 표시가됨
-
+const Lists = ({ title, url }) => {
   const [List, setList] = useState([]);
 
   useEffect(() => {
     axios
-      .post(`/api${pathname}/list`)
+      .post(`/api/${url}/list`)
       .then((res) => {
         if (res.data.postList.length !== 0) {
           setList(res.data.postList);
@@ -29,7 +27,7 @@ const Lists = ({ title }) => {
       {List !== 0 ? (
         <div className="wrap_list">
           <h2>{title} 내역</h2>
-          <Link className="btn_upload" to={`${pathname}/upload`}>
+          <Link className="btn_upload" to={`/${url}/upload`}>
             입력
           </Link>
           <table>
@@ -49,7 +47,7 @@ const Lists = ({ title }) => {
                     <td>{dayjs(item.date).format("YY. MM. DD")}</td>
                     <td>
                       <Link
-                        to={`${pathname}/${item.postNum}`}
+                        to={`/${url}/${item.postNum}`}
                         title={`${item.content} 자세히 보기`}
                       >
                         {item.content}
@@ -62,7 +60,7 @@ const Lists = ({ title }) => {
                       원
                     </td>
                     <td>
-                      <Link to={`${pathname}/edit/${item.postNum}`}>수정</Link>
+                      <Link to={`/${url}/edit/${item.postNum}`}>수정</Link>
                     </td>
                     <td className="btn_delete">삭제</td>
                   </tr>
@@ -75,7 +73,7 @@ const Lists = ({ title }) => {
         <div className="wrap_list">
           <p>현재 {title} 내역이 없습니다.</p>
           <p>입력버튼을 통해 내역을 추가해주세요.</p>
-          <Link className="btn_upload" to={`${pathname}/upload`}>
+          <Link className="btn_upload" to={`/${url}/upload`}>
             입력
           </Link>
         </div>

@@ -1,13 +1,12 @@
-import axios from "axios";
-import Headers from "components/Headers";
-import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "../../css/detail.scss";
+import axios from "axios";
+import dayjs from "dayjs";
+import Headers from "components/Headers";
+import "../css/detail.scss";
 
-const IncomeDetail = ({ title }) => {
+const Detail = ({ title }) => {
   let params = useParams();
-  console.log(params);
 
   const [PostInfo, setPostInfo] = useState({});
   const [Flag, setFlag] = useState(false);
@@ -17,18 +16,16 @@ const IncomeDetail = ({ title }) => {
       postNum: params.postNum,
     };
     axios
-      .post("/api/income/detail", body)
+      .post(`/api/${params.url}/detail`, body)
       .then((res) => {
-        setPostInfo(res.data.income);
+        setPostInfo(res.data.post);
         setFlag(true);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    console.log(PostInfo);
-  }, [PostInfo]);
+  useEffect(() => {}, [PostInfo]);
 
   return (
     <>
@@ -47,7 +44,7 @@ const IncomeDetail = ({ title }) => {
             </dd>
           </dl>
           <div className="button_wrap">
-            <Link to={`/income/edit/${PostInfo.postNum}`}>
+            <Link to={`/${params.url}/edit/${PostInfo.postNum}`}>
               <button className="btn_edit">수정</button>
             </Link>
             <button className="btn_delete">삭제</button>
@@ -60,4 +57,4 @@ const IncomeDetail = ({ title }) => {
   );
 };
 
-export default IncomeDetail;
+export default Detail;
