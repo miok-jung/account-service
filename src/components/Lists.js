@@ -4,12 +4,12 @@ import axios from "axios";
 import dayjs from "dayjs";
 import "../css/list.scss";
 
-const Lists = ({ title, url }) => {
+const Lists = (props) => {
   const [List, setList] = useState([]);
 
   useEffect(() => {
     axios
-      .post(`/api/${url}/list`)
+      .post(`/api/${props.url}/list`)
       .then((res) => {
         if (res.data.postList.length !== 0) {
           setList(res.data.postList);
@@ -20,14 +20,15 @@ const Lists = ({ title, url }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    console.log(props);
+  }, [props]);
 
   return (
     <>
       {List !== 0 ? (
         <div className="wrap_list">
-          <h2>{title} 내역</h2>
-          <Link className="btn_upload" to={`/${url}/upload`}>
+          <h2>{props.title} 내역</h2>
+          <Link className="btn_upload" to={`/${props.url}/upload`}>
             입력
           </Link>
           <table>
@@ -47,7 +48,7 @@ const Lists = ({ title, url }) => {
                     <td>{dayjs(item.date).format("YY. MM. DD")}</td>
                     <td>
                       <Link
-                        to={`/${url}/${item.postNum}`}
+                        to={`/${props.url}/${item.postNum}`}
                         title={`${item.content} 자세히 보기`}
                       >
                         {item.content}
@@ -60,7 +61,9 @@ const Lists = ({ title, url }) => {
                       원
                     </td>
                     <td>
-                      <Link to={`/${url}/edit/${item.postNum}`}>수정</Link>
+                      <Link to={`/${props.url}/edit/${item.postNum}`}>
+                        수정
+                      </Link>
                     </td>
                     <td className="btn_delete">삭제</td>
                   </tr>
@@ -71,9 +74,9 @@ const Lists = ({ title, url }) => {
         </div>
       ) : (
         <div className="wrap_list">
-          <p>현재 {title} 내역이 없습니다.</p>
+          <p>현재 {props.title} 내역이 없습니다.</p>
           <p>입력버튼을 통해 내역을 추가해주세요.</p>
-          <Link className="btn_upload" to={`/${url}/upload`}>
+          <Link className="btn_upload" to={`/${props.url}/upload`}>
             입력
           </Link>
         </div>
