@@ -1,0 +1,64 @@
+@import "./variable";
+
+hr {
+  border-top: 1px dashed $color1;
+}
+
+.wrap_upload {
+  text-align: center;
+  h3 {
+    margin: 2rem 0;
+  }
+  .btn_back {
+    cursor: pointer;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $color1;
+    background-color: $color5;
+    color: $color2;
+    &:hover {
+      border: 1px solid $color5;
+      background-color: $color1;
+      color: $color5;
+    }
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: $color5;
+    width: 50%;
+    height: 20rem;
+    font-size: 20px;
+    label {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 25%;
+      height: 2rem;
+    }
+    input {
+      padding: 0 1rem;
+      width: 75%;
+      height: 2.5rem;
+      font-size: 19px;
+      box-sizing: border-box;
+    }
+    .btn_save {
+      cursor: pointer;
+      padding: none;
+      width: 100%;
+      background-color: $color5;
+      border: 1px solid $color1;
+      border-radius: 0.5rem;
+      color: $color2;
+      &:hover {
+        background-color: $color1;
+        border: 1px solid $color5;
+        color: $color5;
+      }
+    }
+  }
+}

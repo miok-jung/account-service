@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Headers from "components/Headers";
-import { useNavigate } from "react-router-dom";
-import "css/input.scss";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Headers from "components/Headers";
+import "css/upload.scss";
 
-const ExpenseUpload = ({ title }) => {
+const Upload = ({ title }) => {
   let navigate = useNavigate();
+  let params = useParams();
 
   const onBack = () => {
     navigate(-1);
@@ -41,7 +42,7 @@ const ExpenseUpload = ({ title }) => {
       price: price,
     };
     axios
-      .post("/api/expense/submit", body)
+      .post(`/api/${params.url}/submit`, body)
       .then((res) => {
         if (res.data.success) {
           alert("저장이 완료되었습니다.");
@@ -58,21 +59,30 @@ const ExpenseUpload = ({ title }) => {
     <div className="wrap_upload">
       <Headers title={title} />
       <h3>입력하기</h3>
-      <button onClick={onBack}>뒤로가기</button>
+      <button className="btn_back" onClick={onBack}>
+        뒤로가기
+      </button>
       <form>
-        <label htmlFor="inputDate">날짜 선택</label>
+        <label htmlFor="input_date">날짜 선택</label>
         <input
-          id="inputDate"
+          id="input_date"
           type="date"
           onChange={handleDate}
           value={date || ""}
         />
-        <input onChange={handleContent} type="text" />
-        <input onChange={handlePrice} type="number" />
-        <input type="submit" value="저장하기" onClick={(e) => onSubmit(e)} />
+        <label htmlFor="input_content">내용 입력</label>
+        <input id="input_content" onChange={handleContent} type="text" />
+        <label htmlFor="input_price">금액 입력</label>
+        <input id="input_price" onChange={handlePrice} type="number" />
+        <input
+          className="btn_save"
+          type="submit"
+          value="저장하기"
+          onClick={(e) => onSubmit(e)}
+        />
       </form>
     </div>
   );
 };
 
-export default ExpenseUpload;
+export default Upload;
