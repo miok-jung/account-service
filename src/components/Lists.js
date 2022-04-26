@@ -20,9 +20,7 @@ const Lists = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(props);
   }, [props]);
-
   return (
     <>
       {List !== 0 ? (
@@ -38,7 +36,6 @@ const Lists = (props) => {
                 <th>내용</th>
                 <th>가격</th>
                 <th>수정</th>
-                <th>삭제</th>
               </tr>
             </thead>
             <tbody>
@@ -65,7 +62,6 @@ const Lists = (props) => {
                         수정
                       </Link>
                     </td>
-                    <td className="btn_delete">삭제</td>
                   </tr>
                 );
               })}
