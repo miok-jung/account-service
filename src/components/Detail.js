@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
 import Headers from "components/Headers";
@@ -7,6 +7,7 @@ import "../css/detail.scss";
 
 const Detail = ({ title }) => {
   let params = useParams();
+  let navigate = useNavigate();
 
   const [PostInfo, setPostInfo] = useState({});
   const [Flag, setFlag] = useState(false);
@@ -27,6 +28,24 @@ const Detail = ({ title }) => {
   }, []);
   useEffect(() => {}, [PostInfo]);
 
+  const DeleteHandler = () => {
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      let body = {
+        postNum: params.postNum,
+      };
+      axios
+        .post(`/api/${params.url}/delete`, body)
+        .then((res) => {
+          alert("해당 내용이 삭제되었습니다.");
+          navigate(`/${params.url}`);
+        })
+        .catch((err) => {
+          alert("해당 내용이 삭제가 취소되었습니다.", err);
+        });
+    } else {
+      alert("취소");
+    }
+  };
   return (
     <>
       <Headers title={title} />
@@ -47,7 +66,14 @@ const Detail = ({ title }) => {
             <Link to={`/${params.url}/edit/${PostInfo.postNum}`}>
               <button className="btn_edit">수정</button>
             </Link>
-            <button className="btn_delete">삭제</button>
+            <button
+              className="btn_delete"
+              onClick={() => {
+                DeleteHandler();
+              }}
+            >
+              삭제
+            </button>
           </div>
         </>
       ) : (

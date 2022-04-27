@@ -10,7 +10,7 @@ const Headers = ({ title }) => {
         <Link to="/">메인</Link>
         <Link to="/income">수입</Link>
         <Link to="/expense">지출</Link>
-        <Link to="/transfer">이체</Link>
+        {/* <Link to="/transfer">이체</Link> */}
       </nav>
     </header>
   );
