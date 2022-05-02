@@ -9,7 +9,7 @@ const Lists = (props) => {
 
   useEffect(() => {
     axios
-      .post(`/api/${props.url}/list`)
+      .get(`/api/${props.url}/list`)
       .then((res) => {
         if (res.data.postList.length !== 0) {
           setList(res.data.postList);
