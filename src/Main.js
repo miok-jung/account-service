@@ -4,17 +4,31 @@ import "./css/main.scss";
 import axios from "axios";
 
 const Main = () => {
-  const [monthIncome, setMonthIncome] = useState(0);
+  const [MonthIncome, setMonthIncome] = useState(0);
+  const [MonthExpense, setMonthExpense] = useState(0);
+  const [Total, setTotal] = useState(0);
+
   useEffect(() => {
     axios
-      .get("/api/income/total")
+      .get("/api/income/month/total")
       .then((res) => {
         setMonthIncome(res.data.total);
       })
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .get("/api/expense/month/total")
+      .then((res) => {
+        setMonthExpense(res.data.total);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+  useEffect(() => {
+    setTotal(MonthIncome - MonthExpense);
+  }, [MonthIncome, MonthExpense]);
 
   return (
     <>
@@ -29,22 +43,32 @@ const Main = () => {
         </thead>
         <tbody>
           <tr>
-            <td>
-              {monthIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+            <td className="text_red">
+              {MonthIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
             </td>
-            <td>원</td>
+            <td className="text_blue">
+              {MonthExpense.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+            </td>
           </tr>
         </tbody>
       </table>
       <table className="table_total">
         <thead>
           <tr>
-            <th>총 잔액</th>
+            <th>이달의 잔액</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td> 원</td>
+            {Total > 0 ? (
+              <td className="text_red">
+                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              </td>
+            ) : (
+              <td className="text_blue">
+                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              </td>
+            )}
           </tr>
         </tbody>
       </table>
