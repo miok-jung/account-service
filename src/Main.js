@@ -5,8 +5,11 @@ import axios from "axios";
 
 const Main = () => {
   const [MonthIncome, setMonthIncome] = useState(0);
+  const [AllIncome, setAllIncome] = useState(0);
   const [MonthExpense, setMonthExpense] = useState(0);
+  const [AllExpense, setAllExpense] = useState(0);
   const [Total, setTotal] = useState(0);
+  const [AllTotal, setAllTotal] = useState(0);
 
   useEffect(() => {
     axios
@@ -25,10 +28,17 @@ const Main = () => {
       .catch((err) => {
         console.log(err);
       });
+    axios.get("/api/income/all/total").then((res) => {
+      setAllIncome(res.data.total);
+    });
+    axios.get("/api/expense/all/total").then((res) => {
+      setAllIncome(res.data.total);
+    });
   }, []);
   useEffect(() => {
     setTotal(MonthIncome - MonthExpense);
-  }, [MonthIncome, MonthExpense]);
+    setAllTotal(AllIncome - AllExpense);
+  }, [MonthIncome, MonthExpense, AllIncome, AllExpense]);
 
   return (
     <>
@@ -56,6 +66,7 @@ const Main = () => {
         <thead>
           <tr>
             <th>이달의 잔액</th>
+            <th>총 잔액</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +78,15 @@ const Main = () => {
             ) : (
               <td className="text_blue">
                 {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              </td>
+            )}
+            {AllTotal > 0 ? (
+              <td className="text_red">
+                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              </td>
+            ) : (
+              <td className="text_blue">
+                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
               </td>
             )}
           </tr>
