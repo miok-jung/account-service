@@ -1,0 +1,48 @@
+@import './_variable';
+
+h2 {
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  label {
+    width: 20%;
+    height: 2.5rem;
+    font-size: 19px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  input {
+    border: 1px solid $color2;
+    width: 75%;
+    padding: 0 1rem;
+    height: 2.5rem;
+    font-size: 19px;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+  }
+  button {
+    width: 100%;
+    height: 2rem;
+    font-size: 20px;
+    cursor: pointer;
+    padding: none;
+    background-color: $color5;
+    border: 1px solid $color1;
+    border-radius: 0.5rem;
+    color: $color2;
+    margin-bottom: 2rem;
+    &:hover {
+      background-color: $color1;
+      border: 1px solid $color5;
+      color: $color5;
+    }
+  }
+}

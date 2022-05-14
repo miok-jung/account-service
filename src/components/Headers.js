@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "css/header.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import 'css/header.scss';
 
 const Headers = ({ title }) => {
   return (
@@ -11,6 +11,7 @@ const Headers = ({ title }) => {
         <Link to="/income">수입</Link>
         <Link to="/expense">지출</Link>
         {/* <Link to="/transfer">이체</Link> */}
+        <Link to="/login">로그인</Link>
       </nav>
     </header>
   );
