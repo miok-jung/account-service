@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Headers from "components/Headers";
-import "./css/main.scss";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import Headers from 'components/Headers';
+import './css/main.scss';
+import axios from 'axios';
 
 const Main = () => {
   const [MonthIncome, setMonthIncome] = useState(0);
@@ -13,7 +13,7 @@ const Main = () => {
 
   useEffect(() => {
     axios
-      .get("/api/income/month/total")
+      .get('/api/income/month/total')
       .then((res) => {
         setMonthIncome(res.data.total);
       })
@@ -21,18 +21,18 @@ const Main = () => {
         console.log(err);
       });
     axios
-      .get("/api/expense/month/total")
+      .get('/api/expense/month/total')
       .then((res) => {
         setMonthExpense(res.data.total);
       })
       .catch((err) => {
         console.log(err);
       });
-    axios.get("/api/income/all/total").then((res) => {
+    axios.get('/api/income/all/total').then((res) => {
       setAllIncome(res.data.total);
     });
-    axios.get("/api/expense/all/total").then((res) => {
-      setAllIncome(res.data.total);
+    axios.get('/api/expense/all/total').then((res) => {
+      setAllExpense(res.data.total);
     });
   }, []);
   useEffect(() => {
@@ -42,7 +42,7 @@ const Main = () => {
 
   return (
     <>
-      <Headers title={"메인"} />
+      <Headers title={'메인'} />
       <h2>이달의 사용내역</h2>
       <table className="table_income_expense">
         <thead>
@@ -54,10 +54,10 @@ const Main = () => {
         <tbody>
           <tr>
             <td className="text_red">
-              {MonthIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              {MonthIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
             </td>
             <td className="text_blue">
-              {MonthExpense.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              {MonthExpense.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
             </td>
           </tr>
         </tbody>
@@ -73,20 +73,20 @@ const Main = () => {
           <tr>
             {Total > 0 ? (
               <td className="text_red">
-                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
               </td>
             ) : (
               <td className="text_blue">
-                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+                {Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
               </td>
             )}
             {AllTotal > 0 ? (
               <td className="text_red">
-                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
               </td>
             ) : (
               <td className="text_blue">
-                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+                {AllTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 원
               </td>
             )}
           </tr>

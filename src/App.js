@@ -16,16 +16,13 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" exact element={<Main />} />
-      <Route path="/income" element={<Income title={'수입'} />} />
-      <Route path="/expense" element={<Expense title={'지출'} />} />
-      {/* <Route path="/transfer" element={<Transfer title={"이체"} />} /> */}
+      <Route path="/income" element={<Income />} />
+      <Route path="/expense" element={<Expense />} />
+      {/* <Route path="/transfer" element={<Transfer  />} /> */}
       {/* ANCHOR 공통 페이지 */}
-      <Route path={`/:url/upload`} element={<Upload title={'업로드'} />} />
-      <Route path={`/:url/:postNum`} element={<Detail title={'더보기'} />} />
-      <Route
-        path={`/:url/edit/:postNum`}
-        element={<Edit title={'수정하기'} />}
-      />
+      <Route path={`/:url/upload`} element={<Upload />} />
+      <Route path={`/:url/:postNum`} element={<Detail />} />
+      <Route path={`/:url/edit/:postNum`} element={<Edit />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Routes>

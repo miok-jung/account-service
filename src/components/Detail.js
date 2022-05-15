@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import dayjs from "dayjs";
-import Headers from "components/Headers";
-import "../css/detail.scss";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import dayjs from 'dayjs';
+import Headers from 'components/Headers';
+import '../css/detail.scss';
 
-const Detail = ({ title }) => {
+const Detail = () => {
   let params = useParams();
   let navigate = useNavigate();
 
@@ -29,36 +29,36 @@ const Detail = ({ title }) => {
   useEffect(() => {}, [PostInfo]);
 
   const DeleteHandler = () => {
-    if (window.confirm("정말로 삭제하시겠습니까?")) {
+    if (window.confirm('정말로 삭제하시겠습니까?')) {
       let body = {
         postNum: params.postNum,
       };
       axios
         .post(`/api/${params.url}/delete`, body)
         .then((res) => {
-          alert("해당 내용이 삭제되었습니다.");
+          alert('해당 내용이 삭제되었습니다.');
           navigate(`/${params.url}`);
         })
         .catch((err) => {
-          alert("해당 내용이 삭제가 취소되었습니다.", err);
+          alert('해당 내용이 삭제가 취소되었습니다.', err);
         });
     } else {
-      alert("취소");
+      alert('취소');
     }
   };
   return (
     <>
-      <Headers title={title} />
+      <Headers />
       {Flag ? (
         <>
           <dl>
             <dt>날짜 : </dt>
-            <dd>{dayjs(PostInfo.date).format("YYYY 년 MM 월 DD 일")}</dd>
+            <dd>{dayjs(PostInfo.date).format('YYYY 년 MM 월 DD 일')}</dd>
             <dt>내용 : </dt>
             <dd>{PostInfo.content}</dd>
             <dt>가격 : </dt>
             <dd>
-              {PostInfo.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+              {PostInfo.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
               원
             </dd>
           </dl>

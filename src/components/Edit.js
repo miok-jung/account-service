@@ -1,17 +1,17 @@
-import axios from "axios";
-import Headers from "components/Headers";
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import "../css/detail.scss";
+import axios from 'axios';
+import Headers from 'components/Headers';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../css/detail.scss';
 
-const Edit = ({ title }) => {
+const Edit = () => {
   let params = useParams();
   let navigate = useNavigate();
 
   const [PostInfo, setPostInfo] = useState({});
   const [Flag, setFlag] = useState(false);
-  const [date, setDate] = useState("");
-  const [content, setContent] = useState("");
+  const [date, setDate] = useState('');
+  const [content, setContent] = useState('');
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
@@ -52,13 +52,13 @@ const Edit = ({ title }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
-      date === "" ||
+      date === '' ||
       date === 0 ||
-      content === "" ||
-      price === "" ||
+      content === '' ||
+      price === '' ||
       price === 0
     ) {
-      return alert("모든 항목을 채워주세요.");
+      return alert('모든 항목을 채워주세요.');
     }
     let body = {
       date: date,
@@ -70,10 +70,10 @@ const Edit = ({ title }) => {
       .post(`/api/${params.url}/edit`, body)
       .then((res) => {
         if (res.data.success) {
-          alert("수정이 완료되었습니다.");
+          alert('수정이 완료되었습니다.');
           navigate(-1);
         } else {
-          alert("수정에 실패하였습니다.");
+          alert('수정에 실패하였습니다.');
         }
       })
       .catch((err) => {
@@ -83,8 +83,8 @@ const Edit = ({ title }) => {
 
   return (
     <div className="wrap_upload">
-      <Headers title={title} />
-      <h3>입력하기</h3>
+      <Headers />
+      <h3>입력/수정</h3>
       <button className="btn_back" onClick={onBack}>
         뒤로가기
       </button>
@@ -94,21 +94,21 @@ const Edit = ({ title }) => {
           id="input_date"
           type="date"
           onChange={handleDate}
-          value={date || ""}
+          value={date || ''}
         />
         <label htmlFor="input_content">내용 입력</label>
         <input
           id="input_content"
           onChange={handleContent}
           type="text"
-          value={content || ""}
+          value={content || ''}
         />
         <label htmlFor="input_price">금액 입력</label>
         <input
           id="input_price"
           onChange={handlePrice}
           type="number"
-          value={price || ""}
+          value={price || ''}
         />
         <input
           className="btn_save"

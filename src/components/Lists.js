@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import dayjs from "dayjs";
-import "../css/list.scss";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import dayjs from 'dayjs';
+import '../css/list.scss';
 
 const Lists = (props) => {
   const [List, setList] = useState([]);
@@ -25,7 +25,7 @@ const Lists = (props) => {
     <>
       {List !== 0 ? (
         <div className="wrap_list">
-          <h2>{props.title} 내역</h2>
+          <h2>{props.url === 'income' ? '수입' : '지출'} 내역</h2>
           <Link className="btn_upload" to={`/${props.url}/upload`}>
             입력
           </Link>
@@ -42,7 +42,7 @@ const Lists = (props) => {
               {List.map((item, index) => {
                 return (
                   <tr key={index} className="btn_tr_wrap">
-                    <td>{dayjs(item.date).format("YY. MM. DD")}</td>
+                    <td>{dayjs(item.date).format('YY. MM. DD')}</td>
                     <td>
                       <Link
                         to={`/${props.url}/${item.postNum}`}
@@ -54,7 +54,7 @@ const Lists = (props) => {
                     <td>
                       {item.price
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
                       원
                     </td>
                     <td>

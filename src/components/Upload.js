@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import Headers from "components/Headers";
-import "css/upload.scss";
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Headers from 'components/Headers';
+import 'css/upload.scss';
 
-const Upload = ({ title }) => {
+const Upload = () => {
   let navigate = useNavigate();
   let params = useParams();
 
@@ -13,7 +13,7 @@ const Upload = ({ title }) => {
   };
 
   const [date, setDate] = useState(0);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [price, setPrice] = useState(0);
 
   const handleDate = (e) => {
@@ -28,13 +28,13 @@ const Upload = ({ title }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (
-      date === "" ||
+      date === '' ||
       date === 0 ||
-      content === "" ||
-      price === "" ||
+      content === '' ||
+      price === '' ||
       price === 0
     ) {
-      return alert("모든 항목을 채워주세요.");
+      return alert('모든 항목을 채워주세요.');
     }
     let body = {
       date: date,
@@ -45,10 +45,10 @@ const Upload = ({ title }) => {
       .post(`/api/${params.url}/submit`, body)
       .then((res) => {
         if (res.data.success) {
-          alert("저장이 완료되었습니다.");
+          alert('저장이 완료되었습니다.');
           navigate(-1);
         } else {
-          alert("저장에 실패하였습니다.");
+          alert('저장에 실패하였습니다.');
         }
       })
       .catch((err) => {
@@ -57,8 +57,8 @@ const Upload = ({ title }) => {
   };
   return (
     <div className="wrap_upload">
-      <Headers title={title} />
-      <h3>입력하기</h3>
+      <Headers />
+      <h3>등록하기</h3>
       <button className="btn_back" onClick={onBack}>
         뒤로가기
       </button>
@@ -68,7 +68,7 @@ const Upload = ({ title }) => {
           id="input_date"
           type="date"
           onChange={handleDate}
-          value={date || ""}
+          value={date || ''}
         />
         <label htmlFor="input_content">내용 입력</label>
         <input id="input_content" onChange={handleContent} type="text" />
