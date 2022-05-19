@@ -23,7 +23,7 @@ const Login = () => {
         console.log('res: ', res);
       })
       .catch((err) => {
-        console.log('err: ', err.response.data);
+        console.log('err: ', err.response);
       });
   };
   return (

@@ -22,8 +22,10 @@ const Register = () => {
       password: PW,
     };
     axios.post('/api/users/register', body).then((res) => {
-      if (res.data.success) return alert('회원가입에 성공하였습니다.');
-      console.log(res.data);
+      if (res.data.success) {
+        alert('회원가입에 성공하였습니다. 로그인 페이지로 이동합니다.');
+        navigate('/login');
+      }
     });
   };
   return (
