@@ -20,10 +20,13 @@ const Login = () => {
     axios
       .post('/api/users/login', body)
       .then((res) => {
-        console.log('res: ', res);
+        alert(`${res.data.nickname}님 환영합니다.`);
+        navigate('/');
       })
       .catch((err) => {
-        console.log('err: ', err.response);
+        if (err.response.status === 400) {
+          return alert(`${err.response.data.message}`);
+        }
       });
   };
   return (
