@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Headers from 'components/Headers';
-import './css/main.scss';
+import Headers from './Headers';
+import '../css/LandingPage.scss';
 import axios from 'axios';
 
-const Main = () => {
+const LandingPage = () => {
   const [MonthIncome, setMonthIncome] = useState(0);
   const [AllIncome, setAllIncome] = useState(0);
   const [MonthExpense, setMonthExpense] = useState(0);
@@ -95,4 +95,4 @@ const Main = () => {
     </>
   );
 };
-export default Main;
+export default LandingPage;

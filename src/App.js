@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Main from './Main';
+import LandingPage from './components/LandingPage';
 // NOTE USER
 import Login from './components/User/Login';
 import Register from 'components/User/Register';
@@ -15,7 +15,7 @@ import Edit from 'components/Edit';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" exact element={<Main />} />
+      <Route path="/" exact element={<LandingPage />} />
       <Route path="/income" element={<Income />} />
       <Route path="/expense" element={<Expense />} />
       {/* <Route path="/transfer" element={<Transfer  />} /> */}

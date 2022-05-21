@@ -54,15 +54,15 @@ const Login = () => {
         >
           로그인
         </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            navigate('/register');
-          }}
-        >
-          회원가입
-        </button>
       </form>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          navigate('/register');
+        }}
+      >
+        회원가입
+      </button>
     </>
   );
 };
