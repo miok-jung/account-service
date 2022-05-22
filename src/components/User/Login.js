@@ -1,14 +1,16 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import '../../css/user.scss';
+import { loginUser } from '_actions/user_action';
 
 const Login = () => {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const [Email, setEmail] = useState('');
   const [PW, setPW] = useState('');
 
-  const loginFunc = (e) => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
     if (Email === '' || PW === '') {
       return alert('이메일/비밀번호를 입력해주세요.');
@@ -17,10 +19,10 @@ const Login = () => {
       email: Email,
       password: PW,
     };
-    axios
-      .post('/api/users/login', body)
+    // action: loginUser
+    dispatch(loginUser(body))
       .then((res) => {
-        alert(`${res.data.nickname}님 환영합니다.`);
+        alert(`${res.payload.nickname}님 환영합니다.`);
         navigate('/');
       })
       .catch((err) => {
@@ -49,7 +51,7 @@ const Login = () => {
         />
         <button
           onClick={(e) => {
-            loginFunc(e);
+            onSubmitHandler(e);
           }}
         >
           로그인
