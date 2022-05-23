@@ -1,10 +1,12 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '_actions/user_action';
 import '../../css/user.scss';
 
 const Register = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [Nickname, setNickname] = useState('');
   const [Email, setEmail] = useState('');
@@ -14,17 +16,22 @@ const Register = () => {
   const registerFunc = (e) => {
     e.preventDefault();
     if (Nickname === '' || Email === '' || PW === '' || PWCheck === '') {
-      alert('값을 모두 입력해주세요.');
+      return alert('값을 모두 입력해주세요.');
+    }
+    if (PW !== PWCheck) {
+      return alert('비밀번호가 다릅니다.');
     }
     let body = {
       nickname: Nickname,
       email: Email,
       password: PW,
     };
-    axios.post('/api/users/register', body).then((res) => {
-      if (res.data.success) {
+    dispatch(registerUser(body)).then((res) => {
+      if (res.payload.success) {
         alert('회원가입에 성공하였습니다. 로그인 페이지로 이동합니다.');
         navigate('/login');
+      } else {
+        return alert('이메일이 중복됩니다. 다른 이메일로 입력해주세요.');
       }
     });
   };
