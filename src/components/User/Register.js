@@ -13,6 +13,7 @@ const Register = () => {
   const [PW, setPW] = useState('');
   const [PWCheck, setPWCheck] = useState('');
 
+  // FIXME 오류 발생시 해당하는 input창으로 가는 법 알아보기
   const registerFunc = (e) => {
     e.preventDefault();
     if (Nickname === '' || Email === '' || PW === '' || PWCheck === '') {
@@ -67,8 +68,11 @@ const Register = () => {
           value={PWCheck}
           onChange={(e) => setPWCheck(e.currentTarget.value)}
         />
-        <button onClick={(e) => registerFunc(e)}>회원가입</button>
+        <button className="btn_register" onClick={(e) => registerFunc(e)}>
+          회원가입
+        </button>
         <button
+          className="btn_login"
           onClick={() => {
             navigate('/login');
           }}

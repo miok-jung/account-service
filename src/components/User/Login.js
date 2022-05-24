@@ -50,21 +50,23 @@ const Login = () => {
           onChange={(e) => setPW(e.currentTarget.value)}
         />
         <button
+          className="btn_login"
           onClick={(e) => {
             onSubmitHandler(e);
           }}
         >
           로그인
         </button>
+        <button
+          className="btn_register"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate('/register');
+          }}
+        >
+          회원가입
+        </button>
       </form>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          navigate('/register');
-        }}
-      >
-        회원가입
-      </button>
     </>
   );
 };

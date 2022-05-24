@@ -28,21 +28,22 @@ form {
     box-sizing: border-box;
     margin-bottom: 2rem;
   }
-  button {
-    width: 100%;
-    height: 2rem;
-    font-size: 20px;
-    cursor: pointer;
-    padding: none;
-    background-color: $color5;
-    border: 1px solid $color1;
-    border-radius: 0.5rem;
-    color: $color2;
-    margin-bottom: 2rem;
-    &:hover {
-      background-color: $color1;
-      border: 1px solid $color5;
-      color: $color5;
-    }
+}
+.btn_register,
+.btn_login {
+  width: 100%;
+  height: 2rem;
+  font-size: 20px;
+  cursor: pointer;
+  padding: none;
+  background-color: $color5;
+  border: 1px solid $color1;
+  border-radius: 0.5rem;
+  color: $color2;
+  margin-bottom: 2rem;
+  &:hover {
+    background-color: $color1;
+    border: 1px solid $color5;
+    color: $color5;
   }
 }

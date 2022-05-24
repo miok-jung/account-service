@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import LOGO from '../img/logo.svg';
 import 'css/header.scss';
@@ -7,17 +7,17 @@ import axios from 'axios';
 
 const Headers = () => {
   const [Token, setToken, removeToken] = useCookies('x_auth');
-
+  let navigate = useNavigate();
   const logOut = () => {
     axios
       .get('/api/users/logout')
       .then((res) => {
-        alert('로그아웃을 완료하였습니다.');
         removeToken('x_auth');
-        window.location.reload();
+        alert('로그아웃을 완료하였습니다.');
+        navigate('/login');
       })
       .catch((err) => {
-        console.log('err', err);
+        return alert('로그아웃을 실패하였습니다.');
       });
   };
 
