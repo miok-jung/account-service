@@ -6,6 +6,7 @@ import '../css/list.scss';
 
 const Lists = (props) => {
   const [List, setList] = useState([]);
+  const [Flag, setFlag] = useState(false);
 
   useEffect(() => {
     axios
@@ -13,6 +14,7 @@ const Lists = (props) => {
       .then((res) => {
         if (res.data.postList.length !== 0) {
           setList(res.data.postList);
+          setFlag(true);
         } else {
           setList(0);
         }
@@ -23,7 +25,7 @@ const Lists = (props) => {
   }, [props]);
   return (
     <>
-      {List !== 0 ? (
+      {Flag ? (
         <div className="wrap_list">
           <h2>{props.url === 'income' ? '수입' : '지출'} 내역</h2>
           <Link className="btn_upload" to={`/${props.url}/upload`}>
